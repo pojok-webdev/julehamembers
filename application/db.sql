@@ -7,3 +7,6 @@ create table contacts(id int primary key auto_increment,member_id int, phone var
 
 create table notes (id int primary key auto_increment, description text,createdate timestamp default current_timestamp);
 
+create table portofolio (id int primary key auto_increment,member_id int,eventdate date,subject text,createdate timestamp default current_timestamp);
+create table insurances (id int primary key auto_increment,member_id int,name varchar(50),grade varchar(20),createdate timestamp default current_timestamp);
+create table trainings (id int primary key auto_increment,member_id int,eventdate date,subject text,createdate timestamp default current_timestamp);

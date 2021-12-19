@@ -4,7 +4,11 @@ Class Member extends CI_Model{
         parent::__construct();
     }
     function gets(){
-        $sql = ' select a.id,juleha_id,region,a.nickname,a.firstname,a.address,a.lastname,a.position,birthdate from members a ';
+        $sql = 'select a.id,juleha_id,region,a.nickname,a.firstname,a.address,a.lastname,a.position,birthdate,count(b.id)certificate,count(c.id)portofolio,count(d.id)training  from members a ';
+        $sql.= 'left outer join certificates b on b.member_id=a.id ';
+        $sql.= 'left outer join portofolio c on c.member_id=a.id ';
+        $sql.= 'left outer join trainings d on d.member_id=a.id ';
+        $sql.= 'group by  a.id,juleha_id,region,a.nickname,a.firstname,a.address,a.lastname,a.position,birthdate ';
         $ci = & get_instance();
         $que = $ci->db->query($sql);
         return array(

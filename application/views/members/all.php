@@ -68,6 +68,9 @@
                     <th>Region</th>
                     <th>Jabatan</th>
                     <th>Alamat</th>
+                    <th>Sertifikat</th>
+                    <th>Portofolio</th>
+                    <th>Pelatihan</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -79,6 +82,9 @@
                     <td><?php echo $obj->region;?></td>
                     <td><?php echo $obj->position?></td>
                     <td><?php echo $obj->address?></td>
+                    <td><?php echo $obj->certificate?></td>
+                    <td><?php echo $obj->portofolio?></td>
+                    <td><?php echo $obj->training?></td>
                     <td>
                     <button type="button" class="btn btn-default">Action</button>
                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -86,6 +92,9 @@
                     </button>
                     <div class="dropdown-menu" role="menu">
                       <a class="dropdown-item" href="#">Edit</a>
+                      <a class="dropdown-item addCertificate" href="#">Penambahan Sertifikat</a>
+                      <a class="dropdown-item" href="#">Penambahan Portofolio</a>
+                      <a class="dropdown-item" href="#">Penambahan Pelatihan</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Jadikan Non Aktif</a>
                     </div>
@@ -124,5 +133,12 @@
 <!-- ./wrapper -->
 <?php $this->load->view('common/footerscripts');?>
 <?php $this->load->view('members/add');?>
+<?php $this->load->view('members/addCertificate');?>
+<script>
+  $('#example2').on('click','.addCertificate',function(){
+    console.log('x')
+    $('#modal-lg-certificate').modal();
+  })
+</script>
 </body>
 </html>
