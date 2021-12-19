@@ -18,11 +18,10 @@
 <!-- AdminLTE App -->
 <script src="/assets/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/assets/adminlte/dist/js/demo.js"></script>
+<!--<script src="/assets/adminlte/dist/js/demo.js"></script>-->
 <!-- Page specific script -->
 <script>
   $(function () {
-    console.log('js invoked');
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]

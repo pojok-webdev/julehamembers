@@ -88,7 +88,16 @@
 </div>
 <script>
 console.log('add invoked');
-$('#btnSave').click(function(){
-  console.log('test');
-});
+(function($){
+  $('#btnSave').click(function(){
+    console.log('test');
+    $.ajax({
+      url:'/members/save',
+      data:{
+        
+      }
+    })
+  });
+
+}(jQuery))
 </script>

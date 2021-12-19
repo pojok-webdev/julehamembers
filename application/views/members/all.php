@@ -122,13 +122,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php $this->load->view('members/add');?>
 <?php $this->load->view('common/footerscripts');?>
-<script>
-console.log('add invoked');
-$('#btnSave').click(function(){
-  console.log('test');
-});
-</script>
+<?php $this->load->view('members/add');?>
 </body>
 </html>
