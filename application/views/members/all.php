@@ -93,8 +93,8 @@
                     <div class="dropdown-menu" role="menu">
                       <a class="dropdown-item" href="#">Edit</a>
                       <a class="dropdown-item addCertificate" href="#">Penambahan Sertifikat</a>
-                      <a class="dropdown-item" href="#">Penambahan Portofolio</a>
-                      <a class="dropdown-item" href="#">Penambahan Pelatihan</a>
+                      <a class="dropdown-item addPortofolio" href="#">Penambahan Portofolio</a>
+                      <a class="dropdown-item addTraining" href="#">Penambahan Pelatihan</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Jadikan Non Aktif</a>
                     </div>
@@ -134,10 +134,19 @@
 <?php $this->load->view('common/footerscripts');?>
 <?php $this->load->view('members/add');?>
 <?php $this->load->view('members/addCertificate');?>
+<?php $this->load->view('members/addPortofolio');?>
 <script>
   $('#example2').on('click','.addCertificate',function(){
     console.log('x')
     $('#modal-lg-certificate').modal();
+  })
+  $('#example2').on('click','.addPortofolio',function(){
+    console.log('x')
+    $('#modal-lg-portofolio').modal();
+  })
+  $('#example2').on('click','.addTraining',function(){
+    console.log('x')
+    $('#modal-lg-training').modal();
   })
 </script>
 </body>
