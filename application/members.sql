@@ -1,2 +1,2 @@
-insert into members (nickname,firstname,middlename,lastname,juleha_id,position,address,birthdate) values('Hanief','Hanief','','Adzar','210003','Ketua Umum','Istana Mentari 2E/22','1986-01-01');
-insert into members (nickname,firstname,middlename,lastname,juleha_id,position,address,birthdate) values('Muhslam','Muhammad','','Slamet','210001','Ketua Juleha Jatim Sidoarjo','Surya Residence 2B/10','1978-01-01');
+insert into members (nickname,firstname,middlename,lastname,juleha_id,region,position,address,birthdate) values('Hanief','Hanief','','Adzar','210003','sda','Ketua Umum','Istana Mentari 2E/22','1986-01-01');
+insert into members (nickname,firstname,middlename,lastname,juleha_id,region,position,address,birthdate) values('Muhslam','Muhammad','','Slamet','210001','sda','Ketua Juleha Jatim Sidoarjo','Surya Residence 2B/10','1978-01-01');

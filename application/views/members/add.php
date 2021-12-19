@@ -79,10 +79,16 @@
         </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-primary" id="btnSave">Simpan</button>
         </div>
         </div>
         <!-- /.modal-content -->
     </div>
 <!-- /.modal-dialog -->
 </div>
+<script>
+console.log('add invoked');
+$('#btnSave').click(function(){
+  console.log('test');
+});
+</script>

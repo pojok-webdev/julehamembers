@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php echo $title;?></title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="/assets/adminlte/plugins/fontawesome-free/css/all.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/assets/adminlte/plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/assets/adminlte/dist/css/adminlte.min.css">
-</head>
+<?php $this->load->view('common/head');?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -80,6 +65,7 @@
                   <tr>
                     <th>ID Juleha</th>
                     <th>Panggilan</th>
+                    <th>Region</th>
                     <th>Jabatan</th>
                     <th>Alamat</th>
                     <th>Aksi</th>
@@ -90,6 +76,7 @@
                   <tr>
                     <td><?php echo $obj->juleha_id?></td>
                     <td><?php echo $obj->nickname;?></td>
+                    <td><?php echo $obj->region;?></td>
                     <td><?php echo $obj->position?></td>
                     <td><?php echo $obj->address?></td>
                     <td>
@@ -136,44 +123,12 @@
 </div>
 <!-- ./wrapper -->
 <?php $this->load->view('members/add');?>
-<!-- jQuery -->
-<script src="/assets/adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="/assets/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="/assets/adminlte/plugins/jszip/jszip.min.js"></script>
-<script src="/assets/adminlte/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="/assets/adminlte/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/assets/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/assets/adminlte/dist/js/demo.js"></script>
-<!-- Page specific script -->
+<?php $this->load->view('common/footerscripts');?>
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+console.log('add invoked');
+$('#btnSave').click(function(){
+  console.log('test');
+});
 </script>
 </body>
 </html>

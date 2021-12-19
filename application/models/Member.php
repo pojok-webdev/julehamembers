@@ -4,7 +4,7 @@ Class Member extends CI_Model{
         parent::__construct();
     }
     function gets(){
-        $sql = ' select a.id,juleha_id,a.nickname,a.firstname,a.address,a.lastname,a.position,birthdate from members a ';
+        $sql = ' select a.id,juleha_id,region,a.nickname,a.firstname,a.address,a.lastname,a.position,birthdate from members a ';
         $ci = & get_instance();
         $que = $ci->db->query($sql);
         return array(
@@ -13,7 +13,20 @@ Class Member extends CI_Model{
         );
     }
     function save($params){
+        $keys = array();$vals = array();
         $sql = 'insert into members ';
-        $sql.= '';
+        foreach($params as $key=>$val){
+            array_push($keys,$key);
+            array_push($vals,$val);
+        }
+        $sql.= '('.implode(",",$keys).")";
+        $sql.= ' values ';
+        $sql.= '('.implode(",",$vals).')';
+        $ci = & get_instance();
+        $que = $ci->db->query($sql);
+        return array(
+            'id'=>$ci->db->insert_id(),
+            'sql'=>$sql
+        );
     }
 }

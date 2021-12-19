@@ -14,7 +14,7 @@ Class Members extends CI_Controller{
     }
     function save(){
         $params = $this->input->post();
-        $this->member->save($params)
+        echo json_encode($this->member->save($params));
     }
 
 
