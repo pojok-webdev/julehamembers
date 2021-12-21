@@ -8,74 +8,65 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>
-                
-
-
-            <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <!-- /.card-header -->
-              <!-- form start -->
-                <div class="card-body">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">ID Juleha</label>
-                    <input type="text" class="form-control" id="txtJulehaId" placeholder="ID Juleha">
-                  </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Panggilan</label>
-                    <input type="text" class="form-control" id="txtNickName" placeholder="Nama Panggilan">
-                  </div>
+          <p>
+          <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <!-- /.card-header -->
+                <!-- form start -->
+                  <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Nama Pertama</label>
-                    <input type="text" class="form-control" id="txtFirstName" placeholder="Nama Pertama">
-                  </div>
+                      <label for="exampleInputEmail1">ID Juleha</label>
+                      <input type="text" class="form-control" id="txtJulehaId" placeholder="ID Juleha">
+                    </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Nama Akhir</label>
-                    <input type="text" class="form-control" id="txtLastName" placeholder="Nama Akhir">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Alamat</label>
-                    <input type="text" class="form-control" id="txtAddress" placeholder="Alamat">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
+                      <label for="exampleInputEmail1">Nama Panggilan</label>
+                      <input type="text" class="form-control" id="txtNickName" placeholder="Nama Panggilan">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Nama Pertama</label>
+                      <input type="text" class="form-control" id="txtFirstName" placeholder="Nama Pertama">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Nama Akhir</label>
+                      <input type="text" class="form-control" id="txtLastName" placeholder="Nama Akhir">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Alamat</label>
+                      <input type="text" class="form-control" id="txtAddress" placeholder="Alamat">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">File input</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text">Upload</span>
+                        </div>
                       </div>
                     </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
                   </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                </div>
-                <!-- /.card-body -->
+                  <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+
             </div>
-            <!-- /.card -->
-
+            <!--/.col (left) -->
+            <!-- right column -->
+            <!--/.col (right) -->
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          <!--/.col (right) -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-
-
-
-
-
-
-            </p>
+          <!-- /.row -->
+          </div><!-- /.container-fluid -->
+          </p>
         </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>

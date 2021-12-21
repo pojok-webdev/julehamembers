@@ -94,8 +94,21 @@ console.log('add invoked');
     $.ajax({
       url:'/members/save',
       data:{
-        
-      }
+        nickname:$('#txtNickName').val(),
+        firstname:$('#txtFirstName').val(),
+        lastname:$('#txtLastName').val(),
+        address:$('#txtAddres').val(),
+      },
+      type:'post',
+      dataType:'json'
+    })
+    .done(res=>{
+      console.log('Res',res)
+      $("#modal-lg").modal("close")
+    })
+    .fail(err=>{
+      console.log("Err",err)
+      $("#modal-lg").modal("close")
     })
   });
 

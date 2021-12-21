@@ -25,7 +25,7 @@ Class Member extends CI_Model{
         }
         $sql.= '('.implode(",",$keys).")";
         $sql.= ' values ';
-        $sql.= '('.implode(",",$vals).')';
+        $sql.= '("'.implode('","',$vals).'")';
         $ci = & get_instance();
         $que = $ci->db->query($sql);
         return array(
