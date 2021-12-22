@@ -89,6 +89,31 @@
 <script>
 console.log('add invoked');
 (function($){
+  function getBase64FromImageUrl(url) {
+    var img = new Image();
+    img.setAttribute('crossOrigin', 'anonymous');
+
+    img.onload = function () {
+        var canvas = document.createElement("canvas");
+        canvas.width =this.width;
+        canvas.height =this.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(this, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+        console.log('XXX',dataURL)
+
+        alert(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+    };
+
+    img.src = url;
+}
+$('#btnSavex').click(function(){
+console.log('Save invokd')
+  console.log('src',$('#img').attr('src'))
+  //getBase64FromImageUrl($('#img'))
+});
   $('#btnSave').click(function(){
     console.log('test');
     $.ajax({
@@ -102,7 +127,8 @@ console.log('add invoked');
           address:$('#txtAddress').val(),
           region:$('#cmbRegion').val(),
           position:$('#cmbRole').val()
-        }
+        },
+        img:$('#img').attr('src')
       },
       type:'post',
       dataType:'json'

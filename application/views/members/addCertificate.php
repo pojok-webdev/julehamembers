@@ -62,7 +62,7 @@
         </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-primary" id="btnSave">Simpan</button>
+            <button type="button" class="btn btn-primary" id="btnSaveCertifcate">Simpan</button>
         </div>
         </div>
         <!-- /.modal-content -->
@@ -72,7 +72,7 @@
 <script>
 console.log('add invoked');
 (function($){
-  $('#btnSave').click(function(){
+  $('#btnSaveCertifcate').click(function(){
     console.log('test');
     $.ajax({
       url:'/members/save',
