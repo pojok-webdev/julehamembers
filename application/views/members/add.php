@@ -39,6 +39,14 @@
                           <input type="text" class="form-control" id="txtAddress" placeholder="Alamat">
                         </div>
                         <div class="form-group">
+                          <label for="exampleInputEmail1">Kab/Kota</label>
+                          <?php echo form_dropdown("region",array("sby"=>"Surabaya","sda"=>"Sidoarjo"),"1","id=cmbRegion");?>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Keanggotaan</label>
+                          <?php echo form_dropdown("region",array("0"=>"Anggota","1"=>"Pengurus"),"1","id=cmbRole");?>
+                        </div>
+                        <div class="form-group">
                           <label for="exampleInputFile">File input</label>
                           <img src="" alt="" id="img">
                           <div class="input-group">
@@ -86,10 +94,15 @@ console.log('add invoked');
     $.ajax({
       url:'/members/save',
       data:{
-        nickname:$('#txtNickName').val(),
-        firstname:$('#txtFirstName').val(),
-        lastname:$('#txtLastName').val(),
-        address:$('#txtAddres').val(),
+        tableName:'members',
+        columns:{
+          nickname:$('#txtNickName').val(),
+          firstname:$('#txtFirstName').val(),
+          lastname:$('#txtLastName').val(),
+          address:$('#txtAddress').val(),
+          region:$('#cmbRegion').val(),
+          position:$('#cmbRole').val()
+        }
       },
       type:'post',
       dataType:'json'

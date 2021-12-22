@@ -23,20 +23,12 @@
                       <input type="text" class="form-control" id="txtJulehaId" placeholder="ID Juleha">
                     </div>
                   <div class="form-group">
-                      <label for="exampleInputEmail1">Nama Panggilan</label>
+                      <label for="exampleInputEmail1">Judul</label>
                       <input type="text" class="form-control" id="txtNickName" placeholder="Nama Panggilan">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Nama Pertama</label>
+                      <label for="exampleInputPassword1">Tanggal Sertifikat</label>
                       <input type="text" class="form-control" id="txtFirstName" placeholder="Nama Pertama">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Nama Akhir</label>
-                      <input type="text" class="form-control" id="txtLastName" placeholder="Nama Akhir">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Alamat</label>
-                      <input type="text" class="form-control" id="txtAddress" placeholder="Alamat">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputFile">File input</label>

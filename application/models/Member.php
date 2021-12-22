@@ -17,9 +17,10 @@ Class Member extends CI_Model{
         );
     }
     function save($params){
+
         $keys = array();$vals = array();
-        $sql = 'insert into members ';
-        foreach($params as $key=>$val){
+        $sql = 'insert into  ' . $params['tableName'];
+        foreach($params['columns'] as $key=>$val){
             array_push($keys,$key);
             array_push($vals,$val);
         }
