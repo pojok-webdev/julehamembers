@@ -77,6 +77,12 @@ console.log('add invoked');
     $.ajax({
       url:'/members/save',
       data:{
+        tableName:'certificates',
+        columns:{
+          subject:$('#txtSubject').val(),
+          certificatedate:$('#dtcertificatedate').val(),
+          member_id:1,
+        }
         
       }
     })
