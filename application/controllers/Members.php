@@ -4,6 +4,17 @@ Class Members extends CI_Controller{
         parent::__construct();
         $this->load->model('member');
     }
+    function authenticate(){
+        $dbpwd = this->getdbpwd($userpwd);
+        if(sha1($userpwd)===$dbpwd){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function encryptpwd(){
+        echo sha1($this->uri->segment(3));
+    }
     function index(){
         $objs = $this->member->gets();
         $data = array(
