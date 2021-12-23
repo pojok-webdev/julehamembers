@@ -12,6 +12,12 @@ Class Members extends CI_Controller{
         );
         $this->load->view('members/all',$data);
     }
+    function login(){
+        $this->load->view('members/login');
+    }
+    function profile(){
+        $this->load->view('members/profile');
+    }
     function save(){
         $params = $this->input->post();
         echo json_encode($this->member->save($params));
