@@ -162,7 +162,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Profil</h1>
+            <h1 id="btnProfil">Profil</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -186,7 +186,7 @@
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
                        src="/assets/adminlte/dist/img/juleha.jpg"
-                       alt="User profile picture">
+                       alt="User profile picture" id="btnImg">
                 </div>
 
                 <h3 class="profile-username text-center"><?php echo $juleha_id;?></h3>
@@ -250,20 +250,21 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Portofolio</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#portofolio" data-toggle="tab">Portofolio</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Sertifikat</a></li>
                   <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Pelatihan</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
+                  <div class="active tab-pane" id="portofolio">
+                    <?php foreach($portofolio['res'] as $prt){?>
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="/assets/adminlte/dist/img/user1-128x128.jpg" alt="user image">
                         <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#"><?php echo $prt->subject;?>Jonathan Burke Jr.</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                         </span>
                         <span class="description">Shared publicly - 7:30 PM today</span>
@@ -290,7 +291,7 @@
                       <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
                     </div>
                     <!-- /.post -->
-
+                    <?php }?>
                     <!-- Post -->
                     <div class="post clearfix">
                       <div class="user-block">
@@ -498,7 +499,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<input type="file" name="uploader" id="uploader">
 <!-- jQuery -->
 <script src="/assets/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -517,7 +518,58 @@ $("#btnDownloadKTA").click(function(){
     });
 
 });
+$('#btnImg').click(function(){
+  $("#uploader").click();
+})
+$("#uploader").change(function(){
+    var reader = new FileReader()
+    reader.onload = imageIsLoaded
+    reader.readAsDataURL(this.files[0])
+  })
 
+  function getBase64Image(img) {
+    // Create an empty canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = 600;//img.width;
+    canvas.height = 800;//img.height;
+
+    // Copy the image contents to the canvas
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    // Get the data-URL formatted image
+    // Firefox supports PNG and JPEG. You could check img.src to
+    // guess the original format, but be aware the using "image/jpg"
+    // will re-encode the image.
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+  imageIsLoaded = e=>{
+    $('#btnImg').attr('src',e.target.result)
+  }
+  saveImage = _=>{
+    myimg = document.getElementById("btnImg");
+    $.ajax({
+      url:'/members/save_image',
+      data:{
+        image:getBase64Image(myimg),
+        imagename:'<?php echo $juleha_id;?>'
+      },
+      type:'post',
+      dataType:'json'
+    })
+    .done(res=>{
+      console.log('OJ',res)
+    })
+    .fail(err=>{
+      console.log('ERr save image',err)
+    })
+  }
+  $('#btnProfil').click(function(){
+    saveImage();
+  });
 </script>
 </body>
 </html>

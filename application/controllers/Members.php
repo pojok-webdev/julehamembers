@@ -3,6 +3,7 @@ Class Members extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('member');
+        $this->load->model('portofolio');
     }
     function encryptpwd(){
         echo sha1($this->uri->segment(3));
@@ -34,7 +35,8 @@ Class Members extends CI_Controller{
         $obj = $this->member->get($_SESSION['juleha_id']);
         $data = array(
             'juleha_id' => $_SESSION['juleha_id'],
-            'obj'=>$obj['res']
+            'obj'=>$obj['res'],
+            'portofolio'=>$this->portofolio->gets($_SESSION['juleha_id'])
         );       
         $this->load->view('members/profile',$data);
     }
@@ -52,6 +54,12 @@ Class Members extends CI_Controller{
         $fileName = 'C:\Users\user\Documents\juleha\members\\'.$juleha_id.'.jpg';
 
         file_put_contents($fileName, $fileData);
+    }
+    function save_image(){
+        $params = $this->input->post();
+        $this->saveImage($params['image'],$params['imagename']);
+        //return '{result:"OK"}';
+        echo json_encode($params);
     }
     function update(){
         $params = $this->input->post();
