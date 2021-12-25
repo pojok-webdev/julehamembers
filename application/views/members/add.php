@@ -22,6 +22,10 @@
                           <label for="exampleInputEmail1">ID Juleha</label>
                           <input type="text" class="form-control" id="txtJulehaId" placeholder="ID Juleha">
                         </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Password</label>
+                          <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+                        </div>
                       <div class="form-group">
                           <label for="exampleInputEmail1">Nama Panggilan</label>
                           <input type="text" class="form-control" id="txtNickName" placeholder="Nama Panggilan">
@@ -121,12 +125,14 @@ console.log('Save invokd')
       data:{
         tableName:'members',
         columns:{
+          juleha_id:$('#txtJulehaId').val(),
           nickname:$('#txtNickName').val(),
           firstname:$('#txtFirstName').val(),
           lastname:$('#txtLastName').val(),
           address:$('#txtAddress').val(),
           region:$('#cmbRegion').val(),
-          position:$('#cmbRole').val()
+          position:$('#cmbRole').val(),
+          password:$('#txtPassword').val()
         },
         img:$('#img').attr('src')
       },

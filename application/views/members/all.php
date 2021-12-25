@@ -76,7 +76,7 @@
                   </thead>
                   <tbody>
                   <?php foreach($objs as $obj){?>
-                  <tr>
+                  <tr id=<?php echo $obj->id;?>>
                     <td><?php echo $obj->juleha_id?></td>
                     <td><?php echo $obj->nickname;?></td>
                     <td><?php echo $obj->region;?></td>
@@ -92,6 +92,8 @@
                     </button>
                     <div class="dropdown-menu" role="menu">
                       <a class="dropdown-item" href="#">Edit</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item btneditpassword">Edit Password</a>
                       <a class="dropdown-item addCertificate" href="#">Penambahan Sertifikat</a>
                       <a class="dropdown-item addPortofolio" href="#">Penambahan Portofolio</a>
                       <a class="dropdown-item addTraining" href="#">Penambahan Pelatihan</a>
@@ -135,7 +137,19 @@
 <?php $this->load->view('members/add');?>
 <?php $this->load->view('members/addCertificate');?>
 <?php $this->load->view('members/addPortofolio');?>
+<?php $this->load->view('members/editPassword');?>
 <script>
+  $.fn.stairUp = function(options){
+	var settings = $.extend({
+		level:1
+	},options);
+	out=$(this);
+	for(i=0;i<settings.level;i++){
+		out=out.parent();
+	}
+	return out;
+}
+
   $('#example2').on('click','.addCertificate',function(){
     console.log('x')
     $('#modal-lg-certificate').modal();
@@ -147,6 +161,12 @@
   $('#example2').on('click','.addTraining',function(){
     console.log('x')
     $('#modal-lg-training').modal();
+  })
+  $('#example2').on('click','.btneditpassword',function(){
+    console.log('edit passsword clicked');
+    $('#example2 tr').removeClass('selected')
+    $(this).stairUp({level:3}).addClass('selected')
+    $('#modal-lg-edit-password').modal();
   })
 </script>
 </body>

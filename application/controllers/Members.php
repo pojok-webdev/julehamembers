@@ -4,14 +4,6 @@ Class Members extends CI_Controller{
         parent::__construct();
         $this->load->model('member');
     }
-    function authenticate(){
-        $dbpwd = this->getdbpwd($userpwd);
-        if(sha1($userpwd)===$dbpwd){
-            return true;
-        }else{
-            return false;
-        }
-    }
     function encryptpwd(){
         echo sha1($this->uri->segment(3));
     }
@@ -26,22 +18,44 @@ Class Members extends CI_Controller{
     function login(){
         $this->load->view('members/login');
     }
+    function loginhandler(){
+        $params = $this->input->post();
+        $gpw = $this->member->getpassword($params['juleha_id']);
+        if($gpw['password']===sha1($params['password'])){
+            session_start();
+            $_SESSION['juleha_id'] = $params['juleha_id'];
+            redirect('/members/profile');
+        }else{
+            redirect('/members/login');
+        }
+    }
     function profile(){
-        $this->load->view('members/profile');
+        session_start();
+        $obj = $this->member->get($_SESSION['juleha_id']);
+        $data = array(
+            'juleha_id' => $_SESSION['juleha_id'],
+            'obj'=>$obj['res']
+        );       
+        $this->load->view('members/profile',$data);
     }
     function save(){
         $params = $this->input->post();
+        $params['columns']['password'] = sha1($params['columns']['password']);
         echo json_encode($this->member->save($params));
         $img = $_POST['img'];
-        $this->saveImage($img);
+        $this->saveImage($img,$params['columns']['juleha_id']);
     }
-    function saveImage($img){
+    function saveImage($img,$juleha_id){
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
-        //saving
-        $fileName = 'C:\Users\user\Documents\juleha\members\photo.png';
+        $fileName = 'C:\Users\user\Documents\juleha\members\\'.$juleha_id.'.jpg';
+
         file_put_contents($fileName, $fileData);
     }
-
+    function update(){
+        $params = $this->input->post();
+        $params['columns']['password'] = sha1($params['columns']['password']);
+        echo json_encode($this->member->update($params));
+    }
 }

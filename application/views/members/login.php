@@ -24,9 +24,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Silakan Login</p>
 
-      <form action="/assets/adminlte/index3.html" method="post">
+      <form action="/members/loginhandler" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="ID Juleha">
+          <input type="text" class="form-control" name="juleha_id" placeholder="ID Juleha">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-flushed"></span>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" name="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
