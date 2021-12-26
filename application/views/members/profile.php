@@ -185,7 +185,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="/assets/adminlte/dist/img/juleha.jpg"
+                       src="/<?php echo $juleha_id;?>.jpg"
                        alt="User profile picture" id="btnImg">
                 </div>
 
@@ -508,6 +508,8 @@
 <script src="/assets/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/adminlte/dist/js/demo.js"></script>
+<script src="/assets/puji/puji.image.js"></script>
+
 <script>
 $("#btnDownloadKTA").click(function(){
   console.log("KTA hould be downloaded")
@@ -526,25 +528,6 @@ $("#uploader").change(function(){
     reader.onload = imageIsLoaded
     reader.readAsDataURL(this.files[0])
   })
-
-  function getBase64Image(img) {
-    // Create an empty canvas element
-    var canvas = document.createElement("canvas");
-    canvas.width = 600;//img.width;
-    canvas.height = 800;//img.height;
-
-    // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    // Get the data-URL formatted image
-    // Firefox supports PNG and JPEG. You could check img.src to
-    // guess the original format, but be aware the using "image/jpg"
-    // will re-encode the image.
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
 
   imageIsLoaded = e=>{
     $('#btnImg').attr('src',e.target.result)
