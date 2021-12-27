@@ -20,10 +20,19 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="/members/index" class="nav-link  <?php echo $active['list'];?>">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Daftar Anggota
+                <i class="fas fa-angle-right right"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="/members/profile" class="nav-link <?php echo $active['profile'];?>">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Profil Anggota
                 <i class="fas fa-angle-right right"></i>
               </p>
             </a>

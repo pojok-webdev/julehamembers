@@ -41,7 +41,7 @@
             </p>
         </div>
         <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
             <button type="button" class="btn btn-primary" id="btnUpdatePassword">Simpan</button>
         </div>
         </div>
@@ -60,7 +60,7 @@ console.log('add invoked');
         tableName:'members',
         columns:{
           password:$('#txtEditPassword').val(),
-          id:$('#example2 tr.selected').attr('id'),
+          id:idedit,
         },
       },
       type:'post',

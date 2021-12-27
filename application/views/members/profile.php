@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/assets/adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/adminlte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/assets/fontawesome-free-5.15.4-web/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/fontawesome-free-5.15.4-web/css/brands.css">
+  <link rel="stylesheet" href="/assets/fontawesome-free-5.15.4-web/css/solid.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -36,98 +39,15 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+          <!--<i class="far fa-comments"></i>-->
+          <!--<i class="fas fa-arrow-right text-muted"></i>-->
+          <!--<span class="badge badge-danger navbar-badge">3</span>-->
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <button id="btnLogout">Logout</button>
+          <button id="btnChangePassword">Ganti Password</button>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/assets/adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/assets/adminlte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/assets/adminlte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
       </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -168,7 +88,7 @@
                        src="/<?php echo $juleha_id;?>.jpg"
                        alt="User profile picture" id="btnImg">
                 </div>
-
+                
                 <h3 class="profile-username text-center"><?php echo $juleha_id;?></h3>
 
                 <p class="text-muted text-center"><?php echo $obj->nickname;?></p>
@@ -489,6 +409,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/adminlte/dist/js/demo.js"></script>
 <script src="/assets/puji/puji.image.js"></script>
+<?php $this->load->view('members/editPassword');?>
 
 <script>
 $("#btnDownloadKTA").click(function(){
@@ -530,8 +451,15 @@ $("#uploader").change(function(){
       console.log('ERr save image',err)
     })
   }
+  $("#btnLogout").click(function(){
+    window.location.href = '/members/login'
+  });
   $('#btnProfil').click(function(){
     saveImage();
+  });
+  $("#btnChangePassword").click(function(){
+    idedit = <?php echo $obj->id;?>;
+    $("#modal-lg-edit-password").modal();
   });
 </script>
 </body>

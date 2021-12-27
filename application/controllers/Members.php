@@ -10,9 +10,14 @@ Class Members extends CI_Controller{
     }
     function index(){
         $objs = $this->member->gets();
+        session_start();
+        if(!$_SESSION['juleha_id']){
+            redirect('/members/login');
+        }
         $data = array(
             'objs'=>$objs['res'],
-            'title'=>'Keanggotaan Juleha'
+            'title'=>'Keanggotaan Juleha',
+            'active'=>array('list'=>'active','profile'=>'')
         );
         $this->load->view('members/all',$data);
     }
@@ -36,7 +41,8 @@ Class Members extends CI_Controller{
         $data = array(
             'juleha_id' => $_SESSION['juleha_id'],
             'obj'=>$obj['res'],
-            'portofolio'=>$this->portofolio->gets($_SESSION['juleha_id'])
+            'portofolio'=>$this->portofolio->gets($_SESSION['juleha_id']),
+            'active'=>array('list'=>'','profile'=>'active')
         );       
         $this->load->view('members/profile',$data);
     }

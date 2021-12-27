@@ -166,6 +166,9 @@
     console.log('edit passsword clicked');
     $('#example2 tr').removeClass('selected')
     $(this).stairUp({level:3}).addClass('selected')
+    idedit = $(this).stairUp({level:3}).addClass('selected').attr('id')
+    //$('#example2 tr.selected').attr('id')
+    idedit = $(this).stairUp({level:3}).attr("id")
     $('#modal-lg-edit-password').modal();
   })
 </script>
