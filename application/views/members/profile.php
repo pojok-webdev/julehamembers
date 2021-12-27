@@ -86,7 +86,7 @@
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
                        src="/<?php echo $juleha_id;?>.jpg"
-                       alt="User profile picture" id="btnImg">
+                       alt="User profile picture" id="btnImg" width='80px' height='120px'>
                 </div>
                 
                 <h3 class="profile-username text-center"><?php echo $juleha_id;?></h3>
@@ -298,22 +298,6 @@
                       </div>
                       <!-- /.timeline-label -->
                       <!-- timeline item -->
-                      <div>
-                        <i class="fas fa-camera bg-purple"></i>
-
-                        <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-
-                          <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                          <div class="timeline-body">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                          </div>
-                        </div>
-                      </div>
                       <!-- END timeline item -->
                       <div>
                         <i class="far fa-clock bg-gray"></i>
@@ -407,7 +391,7 @@
 <!-- AdminLTE App -->
 <script src="/assets/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/assets/adminlte/dist/js/demo.js"></script>
+<!--<script src="/assets/adminlte/dist/js/demo.js"></script>-->
 <script src="/assets/puji/puji.image.js"></script>
 <?php $this->load->view('members/editPassword');?>
 
