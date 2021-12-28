@@ -4,6 +4,8 @@ Class Members extends CI_Controller{
         parent::__construct();
         $this->load->model('member');
         $this->load->model('portofolio');
+        $this->load->model('certificate');
+        $this->load->model('training');
     }
     function encryptpwd(){
         echo sha1($this->uri->segment(3));
@@ -30,6 +32,7 @@ Class Members extends CI_Controller{
         if($gpw['password']===sha1($params['password'])){
             session_start();
             $_SESSION['juleha_id'] = $params['juleha_id'];
+            $_SESSION['id'] = $gpw['id'];
             redirect('/members/profile');
         }else{
             redirect('/members/login');
@@ -41,7 +44,9 @@ Class Members extends CI_Controller{
         $data = array(
             'juleha_id' => $_SESSION['juleha_id'],
             'obj'=>$obj['res'],
-            'portofolio'=>$this->portofolio->gets($_SESSION['juleha_id']),
+            'portofolio'=>$this->portofolio->gets($_SESSION['id']),
+            'certificate'=>$this->certificate->gets($_SESSION['id']),
+            'training'=>$this->training->gets($_SESSION['id']),
             'active'=>array('list'=>'','profile'=>'active')
         );       
         $this->load->view('members/profile',$data);
