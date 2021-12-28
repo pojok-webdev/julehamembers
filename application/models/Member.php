@@ -65,7 +65,7 @@ Class Member extends CI_Model{
         );
     }
     function getpassword($juleha_id){
-        $sql = 'select id,password from members ';
+        $sql = 'select id,password,memberlevel from members ';
         $sql.= 'where juleha_id = "' . $juleha_id . '" ';
         $ci = & get_instance();
         $que = $ci->db->query($sql);
@@ -74,7 +74,8 @@ Class Member extends CI_Model{
             return array(
                 'sql'=>$sql,
                 'password'=>$result[0]->password,
-                'id'=>$result[0]->id
+                'id'=>$result[0]->id,
+                'memberlevel'=>$result[0]->memberlevel
             );
         }else{
             return array(

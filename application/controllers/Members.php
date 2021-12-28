@@ -33,6 +33,7 @@ Class Members extends CI_Controller{
             session_start();
             $_SESSION['juleha_id'] = $params['juleha_id'];
             $_SESSION['id'] = $gpw['id'];
+            $_SESSION['memberlevel'] = $gpw['memberlevel'];
             redirect('/members/profile');
         }else{
             redirect('/members/login');

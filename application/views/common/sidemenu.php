@@ -9,7 +9,7 @@
           <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block"><?php echo ($_SESSION['memberlevel']==='2')?'Member':'Admin';?></a>
         </div>
       </div>
 
@@ -19,7 +19,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+            <?php if($_SESSION['memberlevel']<2){?>
+            <li class="nav-item menu-open">
             <a href="/members/index" class="nav-link  <?php echo $active['list'];?>">
               <i class="nav-icon fas fa-table"></i>
               <p>
@@ -28,6 +29,7 @@
               </p>
             </a>
           </li>
+          <?php }?>
           <li class="nav-item menu-open">
             <a href="/members/profile" class="nav-link <?php echo $active['profile'];?>">
               <i class="nav-icon fas fa-table"></i>
