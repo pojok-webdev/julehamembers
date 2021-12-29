@@ -79,7 +79,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="/<?php echo $juleha_id;?>.jpg"
+                       src="/images/<?php echo $juleha_id;?>.jpg"
                        alt="User profile picture" id="btnImg" width='80px' height='120px'>
                 </div>
                 
