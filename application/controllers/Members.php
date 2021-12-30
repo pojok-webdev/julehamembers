@@ -45,18 +45,18 @@ Class Members extends CI_Controller{
         }
     }
     function profile(){
-        //session_start();
-        $obj = $this->member->get($this->session->juleha_id);
+//        echo $this->config->item('userimagepath');
+        $obj = $this->member->get($this->session->userdata('juleha_id'));
         $data = array(
-            'juleha_id' => $this->session->juleha_id,
+            'juleha_id' => $this->session->userdata('juleha_id'),
             'obj'=>$obj['res'],
-            'portofolio'=>$this->portofolio->gets($this->session->id),
-            'certificate'=>$this->certificate->gets($this->session->id),
-            'training'=>$this->training->gets($this->session->id),
+            'portofolio'=>$this->portofolio->gets($this->session->userdata('id')),
+            'certificate'=>$this->certificate->gets($this->session->userdata('id')),
+            'training'=>$this->training->gets($this->session->userdata('id')),
             'active'=>array('list'=>'','profile'=>'active')
-        );       
-        $this->load->view('members/profile',$data);
-    }
+        );
+        $this->load->view('members/profile',$data);    
+}
     function save(){
         $params = $this->input->post();
         $params['columns']['password'] = sha1($params['columns']['password']);
@@ -68,7 +68,7 @@ Class Members extends CI_Controller{
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
-        $fileName = 'C:\Users\user\Documents\juleha\members\\'.$juleha_id.'.jpg';
+        $fileName = $this->config->item('userimagepath').$juleha_id.'.jpg';
 
         file_put_contents($fileName, $fileData);
     }

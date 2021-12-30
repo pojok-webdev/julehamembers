@@ -256,12 +256,14 @@
 <script>
 $("#btnDownloadKTA").click(function(){
   console.log("KTA hould be downloaded")
-//  node.innerHTML = "I'm an image now."
-  domtoimage.toBlob(document.getElementById('yourcard'))
+  download();
+  //  node.innerHTML = "I'm an image now."
+/*  
+domtoimage.toBlob(document.getElementById('yourcard'))
     .then(function(blob) {
       window.saveAs(blob, 'my-node.png');
     });
-
+*/
 });
 $('#btnImg').click(function(){
   $("#uploader").click();
@@ -274,6 +276,29 @@ $("#uploader").change(function(){
 
   imageIsLoaded = e=>{
     $('#btnImg').attr('src',e.target.result)
+    setTimeout(() => {
+      saveImage()
+    }, 1000);
+  }
+  svImage = _=>{
+    resizeImage(document.getElementById("btnImg"),function(out){
+      console.log('OUT',out)
+      $.ajax({
+        url:'/members/save_image',
+        data:{
+          image:out.replace(/^data:image\/(png|jpg);base64,/, ""),
+          imagename:'<?php echo $juleha_id;?>'
+        },
+        type:'post',
+        dataType:'json'
+      })
+      .done(res=>{
+        console.log('OoutJ',res)
+      })
+      .fail(err=>{
+        console.log('ERr save image',err)
+      })
+    })
   }
   saveImage = _=>{
     myimg = document.getElementById("btnImg");
@@ -303,6 +328,23 @@ $("#uploader").change(function(){
     idedit = <?php echo $obj->id;?>;
     $("#modal-lg-edit-password").modal();
   });
-</script>
+
+  var download = function(){
+    myimg = document.getElementById("btnImg");
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = 'rgb(255, 255, 0)';
+    ctx.fillRect(0, 0, 500, 500);
+    ctx.drawImage(myimg, 0, 0,190,190);
+    ctx.fillStyle = 'rgb(200, 0, 0)';
+    ctx.fillRect(10, 10, 50, 50);
+
+    ctx.fillText('Juru Sembelih Halal Jawa Timur', 10, 50);
+    var link = document.createElement('a');
+    link.download = 'kta.jpg';
+    link.href = canvas.toDataURL("image/jpeg")
+    link.click();
+  }
+  </script>
 </body>
 </html>
