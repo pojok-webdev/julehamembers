@@ -256,14 +256,10 @@
 <script>
 $("#btnDownloadKTA").click(function(){
   console.log("KTA hould be downloaded")
-  download();
-  //  node.innerHTML = "I'm an image now."
-/*  
-domtoimage.toBlob(document.getElementById('yourcard'))
-    .then(function(blob) {
-      window.saveAs(blob, 'my-node.png');
-    });
-*/
+  download({
+    nickname:"<?php echo $obj->nickname;?>",
+    juleha_id:"<?php echo $obj->juleha_id;?>"
+  });
 });
 $('#btnImg').click(function(){
   $("#uploader").click();
@@ -329,17 +325,36 @@ $("#uploader").change(function(){
     $("#modal-lg-edit-password").modal();
   });
 
-  var download = function(){
-    myimg = document.getElementById("btnImg");
+  var download = function(obj){
+    myimg = new Image();
+    myimg.src = logo;
     var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d");
-    ctx.fillStyle = 'rgb(255, 255, 0)';
-    ctx.fillRect(0, 0, 500, 500);
-    ctx.drawImage(myimg, 0, 0,190,190);
-    ctx.fillStyle = 'rgb(200, 0, 0)';
-    ctx.fillRect(10, 10, 50, 50);
+    ctx.fillStyle = 'rgb(255, 255, 200)';
+    ctx.fillRect(0, 0, 1500, 500);
 
-    ctx.fillText('Juru Sembelih Halal Jawa Timur', 10, 50);
+
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillRect(0, 0, 1500, 40);
+
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.drawImage(myimg, 5, 5,30,30);
+    btnimg = document.getElementById("btnImg");
+    ctx.drawImage(btnimg, 5, 45,50,50);
+
+
+    ctx.fillStyle = 'rgb(200, 200, 200)';
+    //ctx.fillRect(10, 10, 50, 50);
+    ctx.font = '16px serif';
+    ctx.fillText('Juru Sembelih Halal Jawa Timur', 60, 30);
+    ctx.font = '12px serif';
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillText('Nama       : '+obj.nickname, 100, 60);
+    ctx.font = '12px serif';
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillText('ID Juleha : '+obj.juleha_id, 100, 80);
     var link = document.createElement('a');
     link.download = 'kta.jpg';
     link.href = canvas.toDataURL("image/jpeg")
